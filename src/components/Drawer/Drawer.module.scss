@@ -1,0 +1,56 @@
+.overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    .drawer {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        width: 420px;
+        height: 100vh;
+        right: 0;
+        top: 0;
+        background-color: rgb(255, 255, 255);
+        box-shadow: -10px 4px 20px rgba(0, 0, 0, 0.2);
+        z-index: 2;
+        padding: 30px;
+        .items {
+            flex: 1;
+            overflow: auto;
+            margin-bottom: 40px;
+            .cartItem {
+                border: 1px solid rgb(232, 232, 232);
+                border-radius: 20px;
+                overflow: hidden;
+                span {
+                    font-size: 14px;
+                }
+                b {
+                    font-size: 16px;
+                }
+            }
+        }
+        .totalCost {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            div {
+                flex: 1;
+                margin: 0 8px;
+                border-bottom: 1px dashed rgb(194, 194, 194);
+            }
+        }
+        .buttonGray {
+            opacity: 0.6;
+            cursor: pointer;
+            transition: opacity 0.2s ease-in-out;
+            &:hover {
+                opacity: 1;
+            }
+        }    
+    }
+}
