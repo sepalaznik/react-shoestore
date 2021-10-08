@@ -1,35 +1,53 @@
+import React from "react";
 import Card from "./components/Card";
 import Header from "./components/Header";
 import Drawer from "./components/Drawer";
 
-const arr = [
-    { name: "Мужские кроссовки Nike Blazer Mid Suede", imageUrl: "./images/sneakers/1.jpg", price: 12999 },
-    { name: "Мужские кроссовки Nike Air Max 270", imageUrl: "./images/sneakers/2.jpg", price: 14599 },
-    { name: "Мужские кроссовки Nike Super Pot", imageUrl: "./images/sneakers/3.jpg", price: 13899 },
-    { name: "Кроссовки Puma X Aka Boku Future Rider", imageUrl: "./images/sneakers/4.jpg", price: 15299 },
-]
-
 function App() {
+    const [items, setItems] = React.useState([]);
+    const [cartItems, setCardItems] = React.useState([]);
+    const [cartOpened, setCartOpened] = React.useState(false);
+ 
+    React.useEffect(() => {
+        fetch("https://60d62397943aa60017768e77.mockapi.io/items")
+        .then((responce) => {
+            return responce.json();
+        })
+        .then((json) => {
+            setItems(json);
+        });
+    });
+    
+    const handleAddToCart = (obj) => {
+        setCardItems(prev => [ ...prev, obj]);
+    };
+
+    const handleAddToFavorite = (obj) => {
+        console.log(obj);
+    };
+
     return (
         <div className="appWrapper clear">
-            
-            <Header />
+            {cartOpened && <Drawer items = {cartItems} handleCloseCart={() => setCartOpened(false)} /> }
+            <Header handleClickCart={() => setCartOpened(true)} />
             <section className="content p-40">
                 <div className="d-flex align-center justify-between mb-40">
                     <h2>Все кроссовки</h2>
                     <div className="searchBlock d-flex">
-                        <img className="cu-p" src="./images/icon-search.svg" alt="Search" />
+                        <img className="cu-p" src="./img/icon-search.svg" alt="Search" />
                         <input placeholder="Поиск..." />
                     </div>
                 </div>
                 <div className="cardContent d-flex">
 
-                    {arr.map((obj, index) => (
+                    {items.map((item) => (
                         <Card
-                            key={index + obj.name}
-                            name={obj.name}
-                            imageUrl={obj.imageUrl}
-                            price={obj.price}
+                            key={item.id}
+                            title={item.title}
+                            imageUrl={item.imageUrl}
+                            price={item.price}
+                            onClickAdd={(obj) => handleAddToCart(obj)}
+                            onClickFavorite={(obj) => handleAddToFavorite(obj)}
                         />
                     ))}
 
@@ -39,5 +57,4 @@ function App() {
     );
 }
 
-//<Drawer />
 export default App;

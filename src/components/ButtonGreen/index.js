@@ -4,7 +4,7 @@ function ButtonGreen() {
     return (
         <button className={styles.buttonGreen}>
                 Оформить заказ
-            <img src="./images/icon-arrow.svg" alt="Checkout" />
+            <img src="./img/icon-arrow.svg" alt="Checkout" />
         </button>
     )
 }
