@@ -1,10 +1,10 @@
 import styles from "./ButtonGreen.module.scss";
 
-function ButtonGreen() {
+function ButtonGreen(props) {
     return (
         <button className={styles.buttonGreen}>
-                Оформить заказ
-            <img src="./img/icon-arrow.svg" alt="Checkout" />
+            {props.text}
+            <img src="./images/icon-arrow.svg" alt="Checkout" />
         </button>
     )
 }

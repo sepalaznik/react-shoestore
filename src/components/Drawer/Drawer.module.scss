@@ -1,23 +1,25 @@
 .overlay {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     left: 0;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.1);
     z-index: 1;
-    .drawer {
-        display: flex;
-        flex-direction: column;
+    .visible {
         position: absolute;
-        width: 420px;
-        height: 100vh;
         right: 0;
         top: 0;
         background-color: rgb(255, 255, 255);
         box-shadow: -10px 4px 20px rgba(0, 0, 0, 0.2);
         z-index: 2;
-        padding: 30px;
+        .drawer {
+            width: 420px;
+            height: 100vh;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+        }
         .items {
             flex: 1;
             overflow: auto;
@@ -26,6 +28,10 @@
                 border: 1px solid rgb(232, 232, 232);
                 border-radius: 20px;
                 overflow: hidden;
+                display: flex;
+                align-items: center;
+                padding: 10px;
+                margin-bottom: 20px;
                 span {
                     font-size: 14px;
                 }
@@ -51,6 +57,23 @@
             &:hover {
                 opacity: 1;
             }
-        }    
+        }
+        .cartEmpty {
+            width: 420px;
+            height: 100vh;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+             .cartEmptyImage {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                img {
+                    margin-bottom: 30px;
+                }
+            }
+        }
     }
 }

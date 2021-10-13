@@ -14,6 +14,7 @@ This project was bootstrapped with [Create React App].
 - React Context
 - Axios
 - node-sass v.4.14.1 + scss-module
+- mockAPI
 
 ## Available Scripts
 In the project directory, you can run:

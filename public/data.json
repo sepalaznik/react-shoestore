@@ -1,62 +1,74 @@
 [
     {
         "id":1,
-        "title":"Мужские Кроссовки Nike Blazer Mid Suede",
+        "name":"Мужские кроссовки Nike Blazer Mid Suede",
         "price":12999,
-        "imageUrl":"./img/sneakers/1.jpg"
+        "imageUrl":"./images/sneakers/1.jpg"
     },
     {
         "id":2,
-        "title":"Мужские Кроссовки Nike Air Max 270",
+        "name":"Мужские кроссовки Nike Air Max 270",
         "price":15600,
-        "imageUrl":"./img/sneakers/2.jpg"
+        "imageUrl":"./images/sneakers/2.jpg"
     },
     {
         "id":3,
-        "title":"Мужские Кроссовки Nike Blazer Mid Inverto",
+        "name":"Женские кроссовки Nike Blazer Mid Inverto",
         "price":12499,
-        "imageUrl":"./img/sneakers/3.jpg"
+        "imageUrl":"./images/sneakers/3.jpg"
     },
     {
         "id":4,
-        "title":"Кроссовки Puma X Aka Boku Future Rider",
+        "name":"Кроссовки Puma x Aka Boku Future Rider",
         "price":8999,
-        "imageUrl":"./img/sneakers/4.jpg"
+        "imageUrl":"./images/sneakers/4.jpg"
     },
     {
-        "id":"5",
-        "title":"Кроссовки Under Armour Curry S",
+        "id":5,
+        "name":"Женские кроссовки Puma Cell Venom",
+        "price":17899,
+        "imageUrl":"./images/sneakers/5.jpg"
+    },
+    {
+        "id":6,
+        "name":"Кроссовки Puma x RHUDE Basket’68",
+        "price":13299,
+        "imageUrl":"./images/sneakers/6.jpg"
+    },
+    {
+        "id":7,
+        "name":"Кроссовки Jordan Under Armour Curry 5",
         "price":15199,
-        "imageUrl":"./img/sneakers/5.jpg"
+        "imageUrl":"./images/sneakers/7.jpg"
     },
     {
-        "id":"6",
-        "title":"Кроссовки Nike Kurie 7 Black Edition",
+        "id":8,
+        "name":"Кроссовки Jordan Kurie 7 Black Edition",
         "price":16999,
-        "imageUrl":"./img/sneakers/6.jpg"
+        "imageUrl":"./images/sneakers/8.jpg"
     },
     {
-        "id":"7",
-        "title":"Мужские кроссовки Jordan Air Jordan 11",
+        "id":9,
+        "name":"Мужские кроссовки Jordan Air Jordan 11",
         "price":10799,
-        "imageUrl":"./img/sneakers/7.jpg"
+        "imageUrl":"./images/sneakers/9.jpg"
     },
     {
-        "id":"8",
-        "title":"Мужские кроссовки Nike LeBron XVIII",
+        "id":10,
+        "name":"Мужские кроссовки Nike LeBron XVIII",
         "price":16499,
-        "imageUrl":"./img/sneakers/8.jpg"
+        "imageUrl":"./images/sneakers/10.jpg"
     },
     {
-        "id":"9",
-        "title":"Мужские кроссовки Nike LeBron XVIII Low",
+        "id":11,
+        "name":"Мужские кроссовки Nike LeBron XVIII Low",
         "price":13999,
-        "imageUrl":"./img/sneakers/9.jpg"
+        "imageUrl":"./images/sneakers/11.jpg"
     },
     {
-        "id":"10",
-        "title":"Мужские кроссовки Nike Kyrie Flytrap IV",
+        "id":12,
+        "name":"Мужские кроссовки Nike Kyrie Flytrap IV",
         "price":11299,
-        "imageUrl":"./img/sneakers/10.jpg"
+        "imageUrl":"./images/sneakers/12.jpg"
     }
 ]
