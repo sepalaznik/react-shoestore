@@ -1,6 +1,23 @@
 import Card from "../components/Card";
 
-function Home({ items, cartItems, favoriteItems, searchValue, setSearchValue, onChangeSearchValue, handleAddToCart, handleAddToFavorite }) {
+function Home({ items, cartItems, favoriteItems, searchValue, setSearchValue, onChangeSearchValue, handleAddToCart, handleAddToFavorite, isLoading }) {
+    const renderCards = () => {
+        const filtredItems = items.filter((item) => 
+            item.name.toLowerCase().includes(searchValue.toLowerCase()),
+        );
+        return (isLoading ? [...Array(12)] : filtredItems).map((item, index) => (
+            <Card
+                key={index}
+                favorited={favoriteItems.some((obj) => obj.imageUrl === item.imageUrl)}
+                added={cartItems.some((obj) => obj.imageUrl === item.imageUrl)}
+                onClickAdd={(obj) => handleAddToCart(obj)}
+                onClickFavorite={(obj) => handleAddToFavorite(obj)}
+                loading={isLoading}
+                {...item}
+                />
+        ));
+    };
+
     return (
         <section className="content p-40">
             <div className="d-flex align-center justify-between mb-40">
@@ -22,19 +39,7 @@ function Home({ items, cartItems, favoriteItems, searchValue, setSearchValue, on
                 </div>
             </div>
             <div className="cardContent d-flex">
-                {items.filter((item) => item.name.toLowerCase().includes(searchValue.toLowerCase())).map((item) => (
-                    <Card
-                        key={item.id}
-                        id={item.id}
-                        name={item.name}
-                        imageUrl={item.imageUrl}
-                        price={item.price}
-                        favorited={favoriteItems.some((obj) => Number(obj.id) === Number(item.id))}
-                        added={cartItems.some((obj) => Number(obj.id) === Number(item.id))}
-                        onClickAdd={(obj) => handleAddToCart(obj)}
-                        onClickFavorite={(obj) => handleAddToFavorite(obj)}
-                    />
-                ))}
+                {renderCards()}
             </div>
         </section>
     )

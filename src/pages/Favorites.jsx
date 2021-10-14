@@ -15,7 +15,7 @@ function Favorites({ items, cartItems, handleAddToCart, handleAddToFavorite }) {
                         imageUrl={item.imageUrl}
                         price={item.price}
                         favorited
-                        added={cartItems.some((obj) => Number(obj.id) === Number(item.id))}
+                        added={cartItems.some((obj) => obj.imageUrl === item.imageUrl)}
                         onClickAdd={(obj) => handleAddToCart(obj)}
                         onClickFavorite={(obj) => handleAddToFavorite(obj)}
                     />
