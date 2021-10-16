@@ -1,17 +1,16 @@
+import React from "react";
 import Card from "../components/Card";
 
-function Home({ items, cartItems, favoriteItems, searchValue, setSearchValue, onChangeSearchValue, handleAddToCart, handleAddToFavorite, isLoading }) {
+function Home({ items, searchValue, setSearchValue, onChangeSearchValue, isLoading }) {
+
     const renderCards = () => {
         const filtredItems = items.filter((item) => 
             item.name.toLowerCase().includes(searchValue.toLowerCase()),
         );
+
         return (isLoading ? [...Array(12)] : filtredItems).map((item, index) => (
             <Card
                 key={index}
-                favorited={favoriteItems.some((obj) => obj.imageUrl === item.imageUrl)}
-                added={cartItems.some((obj) => obj.imageUrl === item.imageUrl)}
-                onClickAdd={(obj) => handleAddToCart(obj)}
-                onClickFavorite={(obj) => handleAddToFavorite(obj)}
                 loading={isLoading}
                 {...item}
                 />

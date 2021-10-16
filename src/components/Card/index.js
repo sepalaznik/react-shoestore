@@ -1,19 +1,17 @@
 import React from "react";
 import styles from "./Card.module.scss";
 import LoadingCard from "./loading";
+import AppContext from "../../context";
 
-function Card({ id, name, imageUrl, price, onClickFavorite, onClickAdd, favorited = false, added = false, loading }) {
-    const [isAdded, setIsAdded] = React.useState(added);
-    const [isFavorite, setIsFavorite] = React.useState(favorited);
+function Card({ id, name, imageUrl, price, loading = false }) {
+    const { isItemAdded, isItemFavorited, handleAddToCart, handleAddToFavorite } = React.useContext(AppContext);
 
     const handleClickAdd = () => {
-        onClickAdd({ id, name, imageUrl, price });
-        setIsAdded(!isAdded);
+        handleAddToCart({ id, name, imageUrl, price });
     };
     
     const handleClickFavorite = () => {
-        onClickFavorite({ id, name, imageUrl, price });
-        setIsFavorite(!isFavorite);
+        handleAddToFavorite({ id, name, imageUrl, price });
     };
 
     return (
@@ -26,7 +24,7 @@ function Card({ id, name, imageUrl, price, onClickFavorite, onClickAdd, favorite
                                 className="button" 
                                 width={32} 
                                 onClick={handleClickFavorite} 
-                                src={isFavorite ? "./images/heart-liked.svg" : "./images/heart-unliked.svg"} 
+                                src={isItemFavorited(id) ? "./images/heart-liked.svg" : "./images/heart-unliked.svg"} 
                                 alt="Like Goods" />
                         </div>
                         <img width={178} height={150} src={imageUrl} alt="Sneakers" />
@@ -40,7 +38,7 @@ function Card({ id, name, imageUrl, price, onClickFavorite, onClickAdd, favorite
                                 className="button" 
                                 width={32} 
                                 onClick={handleClickAdd} 
-                                src={isAdded ? "./images/btn-checked.svg" : "./images/btn-plus.svg"} 
+                                src={isItemAdded(id) ? "./images/btn-checked.svg" : "./images/btn-plus.svg"} 
                                 alt="Add Goods to Cart" />
                         </div>
                     </>
