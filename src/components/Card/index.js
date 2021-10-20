@@ -1,17 +1,21 @@
 import React from "react";
+
 import styles from "./Card.module.scss";
 import LoadingCard from "./loading";
 import AppContext from "../../context";
 
-function Card({ id, name, imageUrl, price, loading = false }) {
-    const { isItemAdded, isItemFavorited, handleAddToCart, handleAddToFavorite } = React.useContext(AppContext);
+function Card({ id, name, imageUrl, price, loading = false, favorited = false }) {
+    const { isItemAdded, handleAddToCart, handleAddToFavorite } = React.useContext(AppContext);
+    const [isFavorite, setIsFavorite] = React.useState(favorited);
+    const obj = { id, parentId: id, name, imageUrl, price }
 
     const handleClickAdd = () => {
-        handleAddToCart({ id, name, imageUrl, price });
+        handleAddToCart(obj);
     };
     
     const handleClickFavorite = () => {
-        handleAddToFavorite({ id, name, imageUrl, price });
+        handleAddToFavorite(obj);
+        setIsFavorite(!isFavorite);
     };
 
     return (
@@ -24,7 +28,7 @@ function Card({ id, name, imageUrl, price, loading = false }) {
                                 className="button" 
                                 width={32} 
                                 onClick={handleClickFavorite} 
-                                src={isItemFavorited(id) ? "./images/heart-liked.svg" : "./images/heart-unliked.svg"} 
+                                src={isFavorite ? "./images/heart-liked.svg" : "./images/heart-unliked.svg"} 
                                 alt="Like Goods" />
                         </div>
                         <img width={178} height={150} src={imageUrl} alt="Sneakers" />

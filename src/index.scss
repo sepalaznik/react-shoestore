@@ -38,8 +38,12 @@ body {
             }
         }
         .cardContent {
+            display: flex;
             gap: 30px;
             flex-wrap: wrap;
+        }
+        .cardContentOrder {
+            row-gap: 0;
         }
     }
 }

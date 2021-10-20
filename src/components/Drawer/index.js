@@ -1,38 +1,17 @@
 import React from 'react';
 import AppContext from "../../context";
-import axios from 'axios';
 
 import styles from "./Drawer.module.scss";
 import ButtonGreen from "../ButtonGreen";
-import CartInfo from "./cart-info";
+import CartInfo from "./CartInfo";
+import CardMini from '../CardMini';
 
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
-function Drawer({ onRemove, items = [] }) {
-    const { handleCloseCart, cartItems, setCartItems } = React.useContext(AppContext);
-    const [ orderId, setOrderId ] = React.useState(null);
-    const [ isOrderComplete, setIsOrderComplete ] = React.useState(false);
-
-
-    const onClickOrder = async () => {
-        try {
-            const { data } = await axios.post("https://6160a822faa03600179fbb5f.mockapi.io/orders", {items: cartItems});
-            setOrderId(data.id);
-            setIsOrderComplete(true);
-            setCartItems([]);
-            for (let i = 0; i < cartItems.length; i++) {
-                const item = cartItems[i];
-                await axios.delete("https://6160a822faa03600179fbb5f.mockapi.io/cart/" + item.id);
-                await delay(400);
-            }
-        } catch (error) {
-            alert("Не удалось оформить заказ")
-        }
-    };
+function Drawer({ items = [], opened }) {
+    const { handleCloseCart, orderId, isOrderComplete, onClickOrder, totalPrice } = React.useContext(AppContext);
 
     return (
-        <div className={styles.overlay}>
-            <div className={styles.visible}>
+        <div className={`${styles.overlay} ${opened ? styles.overlayOpened : ""}`}>
+            <div className={styles.visibleCart}>
                 {
                     items.length > 0 ? <div className={styles.drawer}>
                         <h2 className="d-flex justify-between mb-30">
@@ -46,24 +25,18 @@ function Drawer({ onRemove, items = [] }) {
                         </h2>
                         <div className={styles.items}>
                         {items.map((obj, index) => 
-                            <div key={index} className={styles.cartItem}>
-                                <img className="mb-15" width={80} height={68} src={obj.imageUrl} alt="Товар в корзине" />
-                                <div className="d-flex flex-column mr-20 ml-20">
-                                    <span className="mb-5">{obj.name}</span>
-                                    <b>{obj.price} руб.</b>
-                                </div>
-                                <img 
-                                    className={styles.buttonGray} 
-                                    onClick={() => onRemove(obj.id)}
-                                    width={32} 
-                                    src="./images/btn-remove.svg" 
-                                    alt="Remove Goods from Cart" />
-                            </div>
+                            <CardMini
+                                key={index}
+                                name={obj.name}
+                                imageUrl={obj.imageUrl}
+                                price={obj.price}
+                                id={obj.id}
+                            />
                         )}
                     </div> 
                     <div className={styles.totalCost}>
                         <span>Итого:</span>
-                        <b>1 520 руб.</b>
+                        <b>{totalPrice} руб.</b>
                     </div>
                     <ButtonGreen text="Оформить заказ" onClick={onClickOrder} />
                 </div>

@@ -1,4 +1,5 @@
 import React from "react";
+
 import Card from "../components/Card";
 import AppContext from "../context";
 
@@ -10,21 +11,25 @@ function Favorites() {
             <div className="d-flex align-center justify-between mb-40">
                 <h2>Мои избранные закладки</h2>
             </div>
-            <div className="cardContent d-flex">
-                {favoriteItems.map((item, index) => (
-                    <Card
-                        key={index}
-                        id={item.id}
-                        name={item.name}
-                        imageUrl={item.imageUrl}
-                        price={item.price}
-                        favorited
-                        added={isItemAdded(item.id)}
-                        onClickAdd={(obj) => handleAddToCart(obj)}
-                        onClickFavorite={(obj) => handleAddToFavorite(obj)}
-                    />
-                ))}
-            </div>
+            {
+                favoriteItems.length > 0 ? <div className="cardContent">
+                    {favoriteItems.map((item, index) => (
+                        <Card
+                            key={index}
+                            id={item.parentId}
+                            isItemAdded={isItemAdded}
+                            favorited={true}
+                            handleClickAdd={(item) => handleAddToCart(item)}
+                            handleClickFavorite={(item) => handleAddToFavorite(item)}
+                            {...item}
+                        />
+                    ))}
+                </div>
+                : <div className="d-flex flex-column align-center justify-center">
+                    <img width={120} src="./images/empty-cart.jpg" alt="Orders is Empty"></img>
+                    <p className="opacity-6 mt-40 mb-40">У вас нет избранных товаров!</p>
+                </div>
+            }
         </section>
     )
 };

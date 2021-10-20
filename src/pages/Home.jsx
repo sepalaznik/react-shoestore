@@ -1,7 +1,8 @@
 import React from "react";
+
 import Card from "../components/Card";
 
-function Home({ items, searchValue, setSearchValue, onChangeSearchValue, isLoading }) {
+function Home({ items, favoriteItems, searchValue, handleAddToCart, handleAddToFavorite, setSearchValue, onChangeSearchValue, isLoading }) {
 
     const renderCards = () => {
         const filtredItems = items.filter((item) => 
@@ -12,6 +13,9 @@ function Home({ items, searchValue, setSearchValue, onChangeSearchValue, isLoadi
             <Card
                 key={index}
                 loading={isLoading}
+                favorited={favoriteItems.some((obj) => Number(obj.parentId) === Number(item.id))}
+                handleClickAdd={(item) => handleAddToCart(item)}
+                handleClickFavorite={(item) => handleAddToFavorite(item)}
                 {...item}
                 />
         ));
@@ -37,7 +41,7 @@ function Home({ items, searchValue, setSearchValue, onChangeSearchValue, isLoadi
                         placeholder="Поиск..." />
                 </div>
             </div>
-            <div className="cardContent d-flex">
+            <div className="cardContent">
                 {renderCards()}
             </div>
         </section>

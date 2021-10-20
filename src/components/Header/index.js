@@ -1,7 +1,13 @@
-import styles from "./Header.module.scss";
+import React from 'react';
 import { Link } from "react-router-dom";
 
-function Header(props) {
+import AppContext from "../../context";
+import styles from "./Header.module.scss";
+
+function Header() {
+    const { totalPrice, handleOpenCart } = React.useContext(AppContext);
+
+
     return (
         <header className={styles.header}>
             <Link to="/">
@@ -14,9 +20,9 @@ function Header(props) {
                 </div>
             </Link>
             <ul className="d-flex">
-                <li onClick={props.handleClickCart} className="mr-30 button">
+                <li onClick={handleOpenCart} className="mr-30 button">
                     <img width={18} src="./images/icon-cart.svg" alt="Cart" />
-                    <span>1205 руб.</span>
+                    <span>{totalPrice} руб.</span>
                 </li>
                 <li>
                     <Link to="/favorites">
@@ -24,7 +30,9 @@ function Header(props) {
                     </Link>
                 </li>
                 <li>
-                    <img width={18} src="./images/icon-user.svg" alt="User Account" />
+                    <Link to="/orders">
+                        <img width={18} src="./images/icon-user.svg" alt="User Account" />
+                    </Link>
                 </li>
             </ul>
         </header>
