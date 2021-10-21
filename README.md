@@ -37,4 +37,4 @@ Builds and deploy the app for production to the Github Pages.\
 package.json: before deploy need change local address:
   "homepage": "."
 to repositorium address:
-  "homepage": "https://sepalaznik.github.io/react-shoestore/"
+  "homepage": "https://sepalaznik.github.io/react-shoestore"
