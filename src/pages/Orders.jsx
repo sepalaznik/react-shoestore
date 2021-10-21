@@ -38,7 +38,7 @@ function Orders() {
                 ))}
             </div> 
             : <div className="d-flex flex-column align-center justify-center">
-                <img width={120} src="./images/empty-cart.jpg" alt="Orders is Empty"></img>
+                <img width={120} src="images/empty-cart.jpg" alt="Orders is Empty"></img>
                 <p className="opacity-6 mt-40 mb-40">Вы ничего не покупали раньше в нашем магазине!</p>
             </div> }
         </section>

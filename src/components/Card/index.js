@@ -4,17 +4,17 @@ import styles from "./Card.module.scss";
 import LoadingCard from "./loading";
 import AppContext from "../../context";
 
-function Card({ id, name, imageUrl, price, loading = false, favorited = false }) {
-    const { isItemAdded, handleAddToCart, handleAddToFavorite } = React.useContext(AppContext);
+function Card({ id, name, imageUrl, price, onClickAdd, onClickFavorite, loading = false, favorited = false }) {
+    const { isItemAdded } = React.useContext(AppContext);
     const [isFavorite, setIsFavorite] = React.useState(favorited);
     const obj = { id, parentId: id, name, imageUrl, price }
 
-    const handleClickAdd = () => {
-        handleAddToCart(obj);
+    const clickAdd = () => {
+        onClickAdd(obj);
     };
     
-    const handleClickFavorite = () => {
-        handleAddToFavorite(obj);
+    const clickFavorite = () => {
+        onClickFavorite(obj);
         setIsFavorite(!isFavorite);
     };
 
@@ -27,9 +27,10 @@ function Card({ id, name, imageUrl, price, loading = false, favorited = false })
                             <img 
                                 className="button" 
                                 width={32} 
-                                onClick={handleClickFavorite} 
-                                src={isFavorite ? "./images/heart-liked.svg" : "./images/heart-unliked.svg"} 
-                                alt="Like Goods" />
+                                onClick={clickFavorite} 
+                                src={isFavorite ? "images/heart-liked.svg" : "images/heart-unliked.svg"} 
+                                alt="Like Goods" 
+                            />
                         </div>
                         <img width={178} height={150} src={imageUrl} alt="Sneakers" />
                         <h3>{name}</h3>
@@ -41,9 +42,10 @@ function Card({ id, name, imageUrl, price, loading = false, favorited = false })
                             <img 
                                 className="button" 
                                 width={32} 
-                                onClick={handleClickAdd} 
-                                src={isItemAdded(id) ? "./images/btn-checked.svg" : "./images/btn-plus.svg"} 
-                                alt="Add Goods to Cart" />
+                                onClick={clickAdd} 
+                                src={isItemAdded(id) ? "images/btn-checked.svg" : "images/btn-plus.svg"} 
+                                alt="Add Goods to Cart" 
+                            />
                         </div>
                     </>
                 )

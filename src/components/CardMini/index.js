@@ -4,7 +4,7 @@ import AppContext from '../../context';
 import styles from "./CardMini.module.scss";
 
 function CardMini({ id, name, imageUrl, price }) {
-    const { onRemoveFromCart, cartOpened } = React.useContext(AppContext);
+    const { handleRemoveFromCart, cartOpened } = React.useContext(AppContext);
 
     return (
         <div className={styles.cartItem}>
@@ -15,9 +15,9 @@ function CardMini({ id, name, imageUrl, price }) {
             </div>
             { cartOpened ? <img 
                 className={styles.buttonGray} 
-                onClick={() => onRemoveFromCart(id)}
+                onClick={() => handleRemoveFromCart(id)}
                 width={32} 
-                src="./images/btn-remove.svg" 
+                src="images/btn-remove.svg" 
                 alt="Remove Goods from Cart" />
             : "" }
         </div>

@@ -15,7 +15,7 @@ export const CartInfo = ({ title, image, description }) => {
                     className={styles.buttonGray} 
                     onClick={handleCloseCart}
                     width={32} 
-                    src="./images/btn-remove.svg" 
+                    src="images/btn-remove.svg" 
                     alt="Close Cart" />
             </h2>
             <div className={styles.cartEmptyImage}>

@@ -6,7 +6,7 @@ function ButtonGreen(props) {
     return (
         <button className={styles.buttonGreen} onClick={props.onClick}>
             {props.text}
-            <img src="./images/icon-arrow.svg" alt="Checkout" />
+            <img src="images/icon-arrow.svg" alt="Checkout" />
         </button>
     )
 }

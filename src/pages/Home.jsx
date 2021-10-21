@@ -1,8 +1,10 @@
 import React from "react";
 
 import Card from "../components/Card";
+import AppContext from "../context";
 
-function Home({ items, favoriteItems, searchValue, handleAddToCart, handleAddToFavorite, setSearchValue, onChangeSearchValue, isLoading }) {
+function Home({ searchValue, setSearchValue, onChangeSearchValue, isLoading }) {
+    const { items, favoriteItems, isItemAdded, handleAddToCart, handleAddToFavorite } = React.useContext(AppContext);
 
     const renderCards = () => {
         const filtredItems = items.filter((item) => 
@@ -13,11 +15,12 @@ function Home({ items, favoriteItems, searchValue, handleAddToCart, handleAddToF
             <Card
                 key={index}
                 loading={isLoading}
+                isItemAdded={isItemAdded}
                 favorited={favoriteItems.some((obj) => Number(obj.parentId) === Number(item.id))}
-                handleClickAdd={(item) => handleAddToCart(item)}
-                handleClickFavorite={(item) => handleAddToFavorite(item)}
+                onClickAdd={(item) => handleAddToCart(item)}
+                onClickFavorite={(item) => handleAddToFavorite(item)}
                 {...item}
-                />
+            />
         ));
     };
 
@@ -28,12 +31,12 @@ function Home({ items, favoriteItems, searchValue, handleAddToCart, handleAddToF
                 <div className="searchBlock d-flex">
                     <img
                         className="cu-p"
-                        src="./images/icon-search.svg"
+                        src="images/icon-search.svg"
                         alt="Search" />
                     {searchValue && <img
                         onClick={() => setSearchValue("")}
                         className="clear"
-                        src="./images/btn-remove.svg"
+                        src="images/btn-remove.svg"
                         alt="Clear Search" />}
                     <input
                         onChange={onChangeSearchValue}

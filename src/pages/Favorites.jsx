@@ -4,7 +4,7 @@ import Card from "../components/Card";
 import AppContext from "../context";
 
 function Favorites() {
-    const { favoriteItems, isItemAdded, handleAddToCart, handleAddToFavorite } = React.useContext(AppContext);
+    const { favoriteItems, cartItems, handleAddToCart, handleRemoveFromFavorite } = React.useContext(AppContext);
 
     return (
         <section className="content p-40">
@@ -16,17 +16,16 @@ function Favorites() {
                     {favoriteItems.map((item, index) => (
                         <Card
                             key={index}
-                            id={item.parentId}
-                            isItemAdded={isItemAdded}
+                            isItemAdded={(item) => cartItems.some((obj) => Number(obj.parentId) === Number(item.parentId))}
                             favorited={true}
-                            handleClickAdd={(item) => handleAddToCart(item)}
-                            handleClickFavorite={(item) => handleAddToFavorite(item)}
+                            onClickAdd={(item) => handleAddToCart(item)}
+                            onClickFavorite={(item) => handleRemoveFromFavorite(item)}
                             {...item}
                         />
                     ))}
                 </div>
                 : <div className="d-flex flex-column align-center justify-center">
-                    <img width={120} src="./images/empty-cart.jpg" alt="Orders is Empty"></img>
+                    <img width={120} src="images/empty-cart.jpg" alt="Orders is Empty"></img>
                     <p className="opacity-6 mt-40 mb-40">У вас нет избранных товаров!</p>
                 </div>
             }

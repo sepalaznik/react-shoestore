@@ -1,7 +1,12 @@
 /node_modules
-/master
 /.pnp
 .pnp.js
+
+Thumbs.db
+*.psd
+*.fig
+*.log
+*.zip
 
 /coverage
 /build
