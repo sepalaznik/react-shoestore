@@ -4,7 +4,7 @@ import Card from "../components/Card";
 import AppContext from "../context";
 
 function Favorites() {
-    const { favoriteItems, cartItems, handleAddToCart, handleRemoveFromFavorite } = React.useContext(AppContext);
+    const { favoriteItems, isItemAdded, handleAddToCart, handleRemoveFromFavorite } = React.useContext(AppContext);
 
     return (
         <section className="content p-40">
@@ -16,7 +16,7 @@ function Favorites() {
                     {favoriteItems.map((item, index) => (
                         <Card
                             key={index}
-                            isItemAdded={(item) => cartItems.some((obj) => Number(obj.parentId) === Number(item.parentId))}
+                            isItemAdded={(item) => isItemAdded(item.parentId)}
                             favorited={true}
                             onClickAdd={(item) => handleAddToCart(item)}
                             onClickFavorite={(item) => handleRemoveFromFavorite(item)}

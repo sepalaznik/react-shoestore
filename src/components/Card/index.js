@@ -12,7 +12,7 @@ function Card({ id, name, imageUrl, price, onClickAdd, onClickFavorite, loading 
     const clickAdd = () => {
         onClickAdd(obj);
     };
-    
+        
     const clickFavorite = () => {
         onClickFavorite(obj);
         setIsFavorite(!isFavorite);

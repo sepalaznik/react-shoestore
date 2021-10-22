@@ -15,7 +15,7 @@ function Home({ searchValue, setSearchValue, onChangeSearchValue, isLoading }) {
             <Card
                 key={index}
                 loading={isLoading}
-                isItemAdded={isItemAdded}
+                isItemAdded={(item) => isItemAdded(item.id)}
                 favorited={favoriteItems.some((obj) => Number(obj.parentId) === Number(item.id))}
                 onClickAdd={(item) => handleAddToCart(item)}
                 onClickFavorite={(item) => handleAddToFavorite(item)}
