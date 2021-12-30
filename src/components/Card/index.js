@@ -4,10 +4,10 @@ import styles from "./Card.module.scss";
 import LoadingCard from "./loading";
 import AppContext from "../../context";
 
-function Card({ id, name, imageUrl, price, onClickAdd, onClickFavorite, loading = false, favorited = false }) {
+function Card({ id, vendorCode, name, imageUrl, price, onClickAdd, onClickFavorite, loading = false, favorited = false }) {
     const { isItemAdded } = React.useContext(AppContext);
     const [isFavorite, setIsFavorite] = React.useState(favorited);
-    const obj = { id, parentId: id, name, imageUrl, price }
+    const obj = { id, vendorCode, name, imageUrl, price }
 
     const clickAdd = () => {
         onClickAdd(obj);
@@ -43,7 +43,7 @@ function Card({ id, name, imageUrl, price, onClickAdd, onClickFavorite, loading 
                                 className="button" 
                                 width={32} 
                                 onClick={clickAdd} 
-                                src={isItemAdded(id) ? "images/btn-checked.svg" : "images/btn-plus.svg"} 
+                                src={isItemAdded(vendorCode) ? "images/btn-checked.svg" : "images/btn-plus.svg"} 
                                 alt="Add Goods to Cart" 
                             />
                         </div>

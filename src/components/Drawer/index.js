@@ -31,6 +31,7 @@ function Drawer({ opened }) {
                                 imageUrl={obj.imageUrl}
                                 price={obj.price}
                                 id={obj.id}
+                                vendorCode={obj.vendorCode}
                             />
                         )}
                     </div> 

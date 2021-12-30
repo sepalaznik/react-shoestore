@@ -16,7 +16,7 @@ function Favorites() {
                     {favoriteItems.map((item, index) => (
                         <Card
                             key={index}
-                            isItemAdded={(item) => isItemAdded(item.parentId)}
+                            isItemAdded={(item) => isItemAdded(item.vendorCode)}
                             favorited={true}
                             onClickAdd={(item) => handleAddToCart(item)}
                             onClickFavorite={(item) => handleRemoveFromFavorite(item)}

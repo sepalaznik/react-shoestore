@@ -7,12 +7,11 @@ import styles from "./Header.module.scss";
 function Header() {
     const { totalPrice, handleOpenCart } = React.useContext(AppContext);
 
-
     return (
         <header className={styles.header}>
             <Link to="/">
                 <div className="d-flex align-center">
-                    <img width={84} src="images/logo-sneakers.svg" alt="My Shop Logo" />
+                    <img width={84} src="./images/logo-sneakers.svg" alt="My Shop Logo" />
                     <div className="headerInfo">
                         <h1 className="text-uppercase">React Shoe Store</h1>
                         <p className="opacity-5">Магазин лучших кросовок</p>

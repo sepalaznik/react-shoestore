@@ -8,14 +8,14 @@ function Orders() {
 
     React.useEffect(() => {
         (async () => {
-            const { data } = await axios.get("https://6160a822faa03600179fbb5f.mockapi.io/orders");
+            const { data } = await axios.get("https://61cc9a6d198df60017aec175.mockapi.io/orders");
             setOrders(data.map((obj) => obj.items).flat());
         })();
     }, []);
 
     // React.useEffect(() => {
     //     async function fetchOrders() {
-    //         const { data } = await axios.get("https://6160a822faa03600179fbb5f.mockapi.io/orders");
+    //         const { data } = await axios.get("https://61cc9a6d198df60017aec175.mockapi.io/orders");
     //         setOrders(data.reduce((prev, obj) => [ ...prev, ...obj.items], []));
     //     };
     //     fetchOrders()

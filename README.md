@@ -1,4 +1,4 @@
-# React Shop Example No 5
+﻿# React Shop Example No 5
 
 Sergei Palaznik, 2021
 
@@ -8,7 +8,7 @@ My fifth attempt at creating a store app, based on the Dennis Archakov stream "R
 And now getting started with Create React App.
 
 This project was bootstrapped with [Create React App].
-Еhe project also includes:
+This project also includes:
 - React + hooks
 - React Router
 - React Context
@@ -16,6 +16,14 @@ This project was bootstrapped with [Create React App].
 - node-sass (v.4.14.1) + scss-module
 - mockAPI
 - deployment on Github Pages
+
+## Additionally
+Basing a database in mockAPI with a dynamic id, led to an unnecessary complication of the task: 
+in order to correctly add products to the shopping cart and to favorites, 
+the trainer used "crutches" in the form of fixing and transferring id to a static view;
+at the same time, adding products to the cart from the favorites page didn't work correctly. 
+To solve this problem, I added the vendor code to the database, which is required when working with products,
+and made it a control attribute for working with the shopping cart and favorites page.
 
 ## Available Scripts
 In the project directory, you can run:
@@ -34,7 +42,7 @@ The app is ready to be deployed!
 
 ### `npm run deploy`
 Builds and deploy the app for production to the Github Pages.\
-* package.json: before deploy need change local address:
+* In the package.json before "dev", "build" or "predeploy" need added local address:
   "homepage": "."
-to repositorium address:
+And for "deploy" need change to repositorium address:
   "homepage": "https://sepalaznik.github.io/react-shoestore"
